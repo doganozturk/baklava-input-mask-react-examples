@@ -22,10 +22,10 @@ To begin working with this showcase project, follow the steps below to clone the
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/doganozturk/baklava-input-mask-react-examples.git
 
 # Navigate to the project directory
-cd <project-name>
+cd baklava-input-mask-react-examples
 
 # Install the dependencies
 npm install
