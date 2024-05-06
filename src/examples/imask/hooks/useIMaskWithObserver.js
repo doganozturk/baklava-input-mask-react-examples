@@ -3,6 +3,7 @@ import { IMask } from 'react-imask';
 
 export function useIMaskWithObserver(maskOptions) {
   const ref = useRef(null);
+  const maskInstanceRef = useRef(null);
 
   useEffect(() => {
     const observer = new MutationObserver((mutationsList) => {
@@ -13,7 +14,7 @@ export function useIMaskWithObserver(maskOptions) {
           if (input) {
             observer.disconnect();
 
-            IMask(input, maskOptions);
+            maskInstanceRef.current = IMask(input, maskOptions);
 
             break;
           }
@@ -30,6 +31,12 @@ export function useIMaskWithObserver(maskOptions) {
 
     return () => {
       observer.disconnect();
+
+      if (maskInstanceRef.current) {
+        maskInstanceRef.current.destroy();
+
+        maskInstanceRef.current = null;
+      }
     };
   }, [maskOptions]);
 
